@@ -15,16 +15,20 @@ using System.Windows.Shapes;
 namespace ZombieHunt.Views
 {
     /// <summary>
-    /// Interaction logic for UvodnaForma.xaml
+    /// Interaction logic for LogIn.xaml
     /// </summary>
-    public partial class UvodnaForma : Window
-
+    public partial class LogIn : Window
     {
-        public UvodnaForma()
+        public LogIn()
         {
             InitializeComponent();
         }
 
-        
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+       
     }
 }

@@ -35,6 +35,19 @@ namespace ZombieHuntWPhone
                         var komentariQuery = from k in komentari.ToList() select k;
                         var slikeQuery = from s in slike.ToList() select s;
 
+                        List<BitmapImage> slikice = new List<BitmapImage>();
+                        foreach (var slika in slikeQuery)
+                        {
+                                if (slika.Slika.ToArray() != null && slika.Slika.ToArray() is Byte[])
+                                {
+                                    MemoryStream stream = new MemoryStream(slika.Slika.ToArray());
+                                    BitmapImage image = new BitmapImage();
+                                    image.SetSource(stream);
+                                    slikice.Add(image);
+                                } 
+                        }
+                        
+
                        
                         foreach (var komentar in komentariQuery)
                         {
@@ -45,24 +58,11 @@ namespace ZombieHuntWPhone
                             kontrola.datumUser.Text = komentar.Datum.ToString();
 
                             Random rnd = new Random();
-                            int broj_slike = rnd.Next(1,6);
+                            int broj_slike = rnd.Next(1,6)-1;
 
-                            foreach (var slika in slikeQuery)
-                            {
-                                if (slika.Id == broj_slike)
-                                {
-                                    if (slika.Slika.ToArray() != null && slika.Slika.ToArray() is Byte[])
-                                    {
-                                        MemoryStream stream = new MemoryStream(slika.Slika.ToArray());
-                                        BitmapImage image = new BitmapImage();
-                                        image.SetSource(stream);
-                                        kontrola.randomSlika.Source = image;
-                                    }
+                            kontrola.randomSlika.Source = slikice[broj_slike];
 
-                                    break;
-                                }
-                            }
-
+                            
                             p.Header = "Komentar " + komentar.Id;
                             p.Content = kontrola;
                      

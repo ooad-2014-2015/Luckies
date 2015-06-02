@@ -16,9 +16,13 @@ namespace ZombieHunt.ViewModels
     {
         private KomentariKolekcija kk;
 
-        public ShowAdminCommand showAdminCommand { get; set; }
+      
         public UcitajOpremuCommand ucitajOpremuCommand { get; set; }
         public UcitajOruzjeCommand ucitajOruzjeCommand { get; set; }
+        public ShowLogInCommand showLogInCommand { get; set; }
+        public ShowHelpCommand showHelpCommand { get; set; }
+        public ShowDescriptionCommand showDescriptionCommand { get; set; } 
+
 
 
         private ObservableCollection<Komentar> _komentariOC;
@@ -54,16 +58,14 @@ namespace ZombieHunt.ViewModels
             komentariOC = new ObservableCollection<Komentar>(kk.UcitajKomentare());
             ucitajOruzjeCommand = new UcitajOruzjeCommand(this);
             ucitajOpremuCommand = new UcitajOpremuCommand(this);
-            showAdminCommand = new ShowAdminCommand(this);
+      
+            showLogInCommand = new ShowLogInCommand(this);
+            showHelpCommand = new ShowHelpCommand(this);
+            showDescriptionCommand = new ShowDescriptionCommand(this);
             
         }
 
-        public void ShowAdministratorPrivileges()
-        {
-            AdministratorForma af = new AdministratorForma();
-            af.ShowDialog();
-        }
-
+       
         public void UcitajOruzje()
         {
             OpremaKolekcija opremaKol = new OpremaKolekcija();                              //trebaju nove instance, ne micati u konstruktor
@@ -76,8 +78,25 @@ namespace ZombieHunt.ViewModels
             opremaOC = new ObservableCollection<Oprema>(opremaKol.UcitajOpremu("oprema"));
         }
 
-        
+        public void ShowLogIn()
+        {
+            LogIn l = new LogIn();
+            l.ShowDialog();
+        }
 
+
+        public void ShowHelp()
+        {
+            Help h = new Help();
+            h.ShowDialog();
+        }
+
+        public void ShowDescription()
+        {
+            ONama on = new ONama();
+            on.ShowDialog();
+        }
+     
 
         #region INotifyPropertyChanged implementation
 

@@ -7,13 +7,13 @@ using System.Windows.Input;
 
 namespace ZombieHunt.ViewModels.Commands
 {
-    public class ShowAdminCommand: ICommand
+    public class ShowHelpCommand : ICommand
     {
-        public LoginVM logic { get; set; }
+        public  UvodnaFormaVM uvf { get; set; }
 
-        public ShowAdminCommand(LoginVM logic)
+        public ShowHelpCommand(UvodnaFormaVM uvf)
         {
-            this.logic = logic;
+            this.uvf = uvf;
         }
 
         public bool CanExecute(object parameter)
@@ -25,7 +25,7 @@ namespace ZombieHunt.ViewModels.Commands
 
         public void Execute(object parameter)
         {
-            logic.ShowAdministratorPrivileges();
+            uvf.ShowHelp();
         }
     }
 }

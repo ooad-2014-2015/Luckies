@@ -61,12 +61,27 @@
     <Compile Include="Models\Oprema.cs" />
     <Compile Include="ViewModels\AdminVM.cs" />
     <Compile Include="ViewModels\Commands\ShowAdminCommand.cs" />
+    <Compile Include="ViewModels\Commands\ShowDescriptionCommand.cs" />
+    <Compile Include="ViewModels\Commands\ShowHelpCommand.cs" />
+    <Compile Include="ViewModels\Commands\ShowLogInCommand.cs" />
     <Compile Include="ViewModels\Commands\UcitajOpremuCommand.cs" />
     <Compile Include="ViewModels\Commands\UcitajOruzjeCommand.cs" />
     <Compile Include="ViewModels\Commands\UnesiNovoOsobljeCommand.cs" />
+    <Compile Include="ViewModels\DescriptionVM.cs" />
+    <Compile Include="ViewModels\HelpVM.cs" />
+    <Compile Include="ViewModels\LoginVM.cs" />
     <Compile Include="ViewModels\UvodnaFormaVM.cs" />
     <Compile Include="Views\AdministratorForma.xaml.cs">
       <DependentUpon>AdministratorForma.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Help.xaml.cs">
+      <DependentUpon>Help.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogIn.xaml.cs">
+      <DependentUpon>LogIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ONama.xaml.cs">
+      <DependentUpon>ONama.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UvodnaForma.xaml.cs">
       <DependentUpon>UvodnaForma.xaml</DependentUpon>
@@ -104,13 +119,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Help.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ONama.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\UvodnaForma.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Face13.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Cover.jpg" />
@@ -118,6 +142,18 @@
     <Resource Include="Images\Driver.png" />
     <Resource Include="Images\HiredGun.png" />
     <Resource Include="Images\Mechanic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="onama.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\slika1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\slika2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\saccubos.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
