@@ -7,14 +7,13 @@ using System.Windows.Input;
 
 namespace ZombieHunt.ViewModels.Commands
 {
-
-    public class UcitajOruzjeCommand : ICommand
+    public class DodajKlijentaCommand: ICommand
     {
-        public UvodnaFormaVM ufvm { get; set; }
+        public RezervacijaVM rvm { get; set; }
 
-        public UcitajOruzjeCommand(UvodnaFormaVM ufvm)
+        public DodajKlijentaCommand(RezervacijaVM rvm)
         {
-            this.ufvm = ufvm;
+            this.rvm = rvm;
         }
 
         public bool CanExecute(object parameter)
@@ -22,11 +21,12 @@ namespace ZombieHunt.ViewModels.Commands
             return true;
         }
 
+        #pragma warning disable 0067
         public event EventHandler CanExecuteChanged;
 
         public void Execute(object parameter)
         {
-            ufvm.UcitajOruzje();
+            rvm.DodajKlijenta();
         }
     }
 }

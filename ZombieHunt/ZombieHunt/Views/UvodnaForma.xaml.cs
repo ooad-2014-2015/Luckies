@@ -18,7 +18,6 @@ namespace ZombieHunt.Views
     /// Interaction logic for UvodnaForma.xaml
     /// </summary>
     public partial class UvodnaForma : Window
-
     {
         public UvodnaForma()
         {

@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace ZombieHunt.ViewModels.Commands
 {
-    public class ShowDescriptionCommand : ICommand
+    public class Proba: ICommand
     {
-        public  UvodnaFormaVM uvf { get; set; }
+        public RezervacijaVM rvm { get; set; }
 
-        public ShowDescriptionCommand(UvodnaFormaVM uvf)
+        public Proba(RezervacijaVM rvm)
         {
-            this.uvf = uvf;
+            this.rvm = rvm;
         }
 
         public bool CanExecute(object parameter)
@@ -21,11 +22,13 @@ namespace ZombieHunt.ViewModels.Commands
             return true;
         }
 
+
+        #pragma warning disable 0067
         public event EventHandler CanExecuteChanged;
 
         public void Execute(object parameter)
         {
-            uvf.ShowDescription();
+            MessageBox.Show("HUHUU");
         }
     }
 }

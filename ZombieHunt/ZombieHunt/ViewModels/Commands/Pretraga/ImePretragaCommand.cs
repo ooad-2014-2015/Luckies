@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace ZombieHunt.ViewModels.Commands
 {
-    public class UcitajOpremuCommand: ICommand
+    public class ImePretragaCommand: ICommand
     {
-        public UvodnaFormaVM ufvm { get; set; }
+        public AdminVM avm { get; set; }
 
-        public UcitajOpremuCommand(UvodnaFormaVM ufvm)
+        public ImePretragaCommand(AdminVM avm)
         {
-            this.ufvm = ufvm;
+            this.avm = avm;
         }
 
         public bool CanExecute(object parameter)
@@ -21,11 +22,13 @@ namespace ZombieHunt.ViewModels.Commands
             return true;
         }
 
+
+        #pragma warning disable 0067
         public event EventHandler CanExecuteChanged;
 
         public void Execute(object parameter)
         {
-            ufvm.UcitajOpremu();
+            avm.FiltrirajPoImenu((parameter as TextBox).Text);
         }
     }
 }

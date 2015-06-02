@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace ZombieHunt.Views
 {
     /// <summary>
-    /// Interaction logic for ONama.xaml
+    /// Interaction logic for Rezervacija_pt1.xaml
     /// </summary>
-    public partial class ONama : Window
+    public partial class Rezervacija_pt1 : Window
     {
-        public ONama()
+        public Rezervacija_pt1()
         {
             InitializeComponent();
         }

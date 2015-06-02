@@ -34,8 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,31 +59,50 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\Komentar.cs" />
-    <Compile Include="Models\Oprema.cs" />
+    <Compile Include="Models\Klijent.cs" />
+    <Compile Include="Models\Ponuda\Komentar.cs" />
+    <Compile Include="Models\Ponuda\KomentariKolekcija.cs" />
+    <Compile Include="Models\Ponuda\Oprema.cs" />
+    <Compile Include="Models\Ponuda\OpremaKolekcija.cs" />
+    <Compile Include="Models\Ponuda\Osoblje.cs" />
+    <Compile Include="Models\Ponuda\OsobljeKolekcija.cs" />
+    <Compile Include="Models\Pretraga.cs" />
+    <Compile Include="Models\PretragaKolekcija.cs" />
     <Compile Include="ViewModels\AdminVM.cs" />
-    <Compile Include="ViewModels\Commands\ShowAdminCommand.cs" />
-    <Compile Include="ViewModels\Commands\ShowDescriptionCommand.cs" />
-    <Compile Include="ViewModels\Commands\ShowHelpCommand.cs" />
-    <Compile Include="ViewModels\Commands\ShowLogInCommand.cs" />
-    <Compile Include="ViewModels\Commands\UcitajOpremuCommand.cs" />
-    <Compile Include="ViewModels\Commands\UcitajOruzjeCommand.cs" />
+    <Compile Include="ViewModels\Commands\DodajKlijentaCommand.cs" />
+    <Compile Include="ViewModels\Commands\NastaviRezervacijuCommand.cs" />
+    <Compile Include="ViewModels\Commands\Ponuda\PrikaziONamaCommand.cs" />
+    <Compile Include="ViewModels\Commands\Ponuda\PrikaziOsobljeCommand.cs" />
+    <Compile Include="ViewModels\Commands\Ponuda\ShowAdminCommand.cs" />
+    <Compile Include="ViewModels\Commands\Ponuda\UcitajHranuCommand.cs" />
+    <Compile Include="ViewModels\Commands\Ponuda\UcitajOpremuCommand.cs" />
+    <Compile Include="ViewModels\Commands\Ponuda\UcitajOruzjeCommand.cs" />
+    <Compile Include="ViewModels\Commands\Ponuda\UcitajOsobljeCommand.cs" />
+    <Compile Include="ViewModels\Commands\Ponuda\UcitajVozilaCommand.cs" />
+    <Compile Include="ViewModels\Commands\Pretraga\ImePretragaCommand.cs" />
+    <Compile Include="ViewModels\Commands\Pretraga\PrezimePretragaCommand.cs" />
+    <Compile Include="ViewModels\Commands\Proba.cs" />
+    <Compile Include="ViewModels\Commands\RezervisiOpremuCommand.cs" />
+    <Compile Include="ViewModels\Commands\RezervisiOruzjeCommand.cs" />
     <Compile Include="ViewModels\Commands\UnesiNovoOsobljeCommand.cs" />
-    <Compile Include="ViewModels\DescriptionVM.cs" />
-    <Compile Include="ViewModels\HelpVM.cs" />
-    <Compile Include="ViewModels\LoginVM.cs" />
+    <Compile Include="ViewModels\Commands\Ponuda\ZapocniRezervacijuCommand.cs" />
+    <Compile Include="ViewModels\OsobljeFormaVM.cs" />
+    <Compile Include="ViewModels\RezervacijaVM.cs" />
     <Compile Include="ViewModels\UvodnaFormaVM.cs" />
     <Compile Include="Views\AdministratorForma.xaml.cs">
       <DependentUpon>AdministratorForma.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Help.xaml.cs">
-      <DependentUpon>Help.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\LogIn.xaml.cs">
-      <DependentUpon>LogIn.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ONama.xaml.cs">
       <DependentUpon>ONama.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OsobljeForma.xaml.cs">
+      <DependentUpon>OsobljeForma.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Rezervacija_pt1.xaml.cs">
+      <DependentUpon>Rezervacija_pt1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Rezervacija_pt2.xaml.cs">
+      <DependentUpon>Rezervacija_pt2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UvodnaForma.xaml.cs">
       <DependentUpon>UvodnaForma.xaml</DependentUpon>
@@ -119,15 +140,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Help.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\LogIn.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\ONama.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OsobljeForma.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Rezervacija_pt1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Rezervacija_pt2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,16 +169,11 @@
     <Resource Include="Images\Mechanic.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="onama.txt" />
+    <Resource Include="Images\ONama1.jpg" />
+    <Resource Include="Images\ONama2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\slika1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\slika2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\saccubos.jpg" />
+    <Resource Include="ONama.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

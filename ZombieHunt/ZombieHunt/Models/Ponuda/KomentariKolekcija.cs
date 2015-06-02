@@ -4,42 +4,12 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ZombieHunt.Models
 {
-    public class Komentar
+    public class KomentariKolekcija
     {
-        int id;
-        string tekst;
-        DateTime datum;
-
-        public Komentar(int _id, string _tekst, DateTime _datum)
-        {
-            ID = _id;
-            Tekst = _tekst;
-            Datum = _datum;
-        }
-
-        public int ID
-        {
-            get { return id; }
-            set { id = value; }
-        }
-
-        public string Tekst
-        {
-            get { return tekst; }
-            set { tekst = value; }
-        }
-
-        public DateTime Datum
-        {
-            get { return datum; }
-            set { datum = value; }
-        }
-    }
-
-    public class KomentariKolekcija {
 
         SqlConnection conn;
         List<Komentar> listaKomentara;
@@ -73,7 +43,7 @@ namespace ZombieHunt.Models
                     id = reader.GetInt32(0);
                     tekst = reader.GetString(1);
                     datum = reader.GetDateTime(2);
-                    
+
                     listaKomentara.Add(new Komentar(id, tekst, datum));
                 }
 
@@ -81,12 +51,11 @@ namespace ZombieHunt.Models
             }
             catch (SqlException sqle)
             {
-                //Console.WriteLine("Error accesing the database: {0}", sqle.Message);
+                MessageBox.Show("Error accesing the database: {0}", sqle.Message);
             }
             finally
             {
                 conn.Close();
-                //Console.WriteLine("Konekcija zatvorena!");
             }
             return listaKomentara;
         }

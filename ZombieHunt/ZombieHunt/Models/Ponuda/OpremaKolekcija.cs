@@ -9,54 +9,8 @@ using System.Windows.Media.Imaging;
 
 namespace ZombieHunt.Models
 {
-    public class Oprema
-    {
-        int id;
-        string naziv;
-        double cijena;
-        BitmapImage bitmap;
-
-        public Oprema(int _id, string _naziv, double _cijena, BitmapImage _bitmap)
-        {
-            id = _id;
-            naziv = _naziv;
-            cijena = _cijena;
-            bitmap = _bitmap;
-        }
-
-        public int ID
-        {
-            get { return id; }
-            set { id = value; }
-        }
-
-        public string Naziv
-        {
-            get { return naziv; }
-            set { naziv = value; }
-        }
-
-        public double Cijena
-        {
-            get { return cijena; }
-            set { cijena = value; }
-        }
-
-        public string CijenaS
-        {
-            get { return cijena + "$"; }
-        }
-
-        public BitmapImage Bitmap
-        {
-            get { return bitmap; }
-            set { bitmap = value; }
-        }
-    }
-
     public class OpremaKolekcija
     {
-
         private BitmapImage UcitajSliku(MemoryStream mstr)
         {
             BitmapImage bitmap = new BitmapImage();
@@ -96,8 +50,10 @@ namespace ZombieHunt.Models
                 command.Connection = conn;
 
                 if (s == "oruzje") command.CommandText = "SELECT [ID], [Naziv], [Cijena], [Slika] FROM [ZombieHuntDB].[dbo].[Oruzje]";
-                else if(s=="oprema") command.CommandText = "SELECT [ID], [Naziv], [Cijena], [Slika] FROM [ZombieHuntDB].[dbo].[Oprema]";
-                
+                else if (s == "oprema") command.CommandText = "SELECT [ID], [Naziv], [Cijena], [Slika] FROM [ZombieHuntDB].[dbo].[Oprema]";
+                else if (s == "hrana") command.CommandText = "SELECT [ID], [Naziv], [Cijena], [Slika] FROM [ZombieHuntDB].[dbo].[Hrana]";
+                else if (s == "vozila") command.CommandText = "SELECT [ID], [Naziv], [Cijena], [Slika] FROM [ZombieHuntDB].[dbo].[Vozila]";
+
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -127,7 +83,5 @@ namespace ZombieHunt.Models
             }
             return listaOpreme;
         }
-
-        
     }
 }

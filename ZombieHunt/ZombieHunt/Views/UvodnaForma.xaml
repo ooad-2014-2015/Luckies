@@ -8,6 +8,10 @@
     <Window.Resources>
         <vm:UvodnaFormaVM x:Key="uvodnaForma"/>
     </Window.Resources>
+    <Window.Visibility>
+        <Binding Path="Hidden" Source="{StaticResource uvodnaForma}"/>
+    </Window.Visibility>
+
 
     <Grid x:Name="GridComplete">
         <Grid.RowDefinitions>
@@ -20,7 +24,7 @@
                 <ImageBrush ImageSource="/ZombieHunt;component/Images/Cover.jpg"/>
             </Grid.Background>
 
-            <Button Width="100" Height="20" Margin="0,10,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Command="{Binding showLogInCommand, Source={StaticResource uvodnaForma}}" Content="Login"/>
+            <Button Width="100" Height="20" Margin="0,10,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Command="{Binding showAdminCommand, Source={StaticResource uvodnaForma}}" Content="Login"/>
         </Grid>
 
 
@@ -38,14 +42,16 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <Button Grid.Row="0" Command="{Binding showDescriptionCommand, Source={StaticResource uvodnaForma}}" Content="O nama"/>
-                <Button Grid.Row="1" Command="{Binding ucitajOruzjeCommand, Source={StaticResource uvodnaForma}}" Content="Pregled oružja"  />
-                <Button Grid.Row="2" Command="{Binding ucitajOpremuCommand, Source={StaticResource uvodnaForma}}" Content="Pregled opreme"/>
-                <Button Grid.Row="3" Content="Pregled osoblja"/>
-                <Button Grid.Row="4" Content="Pregled vozila"/>
-                <Button Grid.Row="5" Content="Help" Command="{Binding showHelpCommand, Source={StaticResource uvodnaForma}}"   />
+                <Button Grid.Row="0" Content="O nama" Command="{Binding prikaziONamaCommand, Source={StaticResource uvodnaForma}}" />
+                <Button Grid.Row="1" Content="Pregled oružja" Command="{Binding ucitajOruzjeCommand, Source={StaticResource uvodnaForma}}"/>
+                <Button Grid.Row="2" Content="Pregled opreme" Command="{Binding ucitajOpremuCommand, Source={StaticResource uvodnaForma}}"/>
+                <Button Grid.Row="3" Content="Pregled osoblja" Command="{Binding prikaziOsobljeCommand, Source={StaticResource uvodnaForma}}"/>
+                <Button Grid.Row="4" Content="Pregled hrane" Command="{Binding ucitajHranuCommand, Source={StaticResource uvodnaForma}}"/>
+                <Button Grid.Row="5" Content="Pregled vozila" Command="{Binding ucitajVozilaCommand, Source={StaticResource uvodnaForma}}" />
+                <Button Grid.Row="6" Content="Play Zombie Game"/>
             </Grid>
 
             <Grid Name="NonMenu" Grid.Column="1">
@@ -61,19 +67,24 @@
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
-                        <ScrollViewer x:Name="SV" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-
-                            <ListView x:Name="glavniGrid" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <WrapPanel IsItemsHost="True" />
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                
-
-
-                            </ListView>
-                        </ScrollViewer>
+                        <ListView ItemsSource="{Binding opremaOC, Source={StaticResource uvodnaForma}}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel IsItemsHost="True" />
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"  BorderBrush="Gray" BorderThickness="1">
+                                        <Grid Width="135" Height="135" >
+                                            <Image Margin="0,0,0,26" Source="{Binding Bitmap}"></Image>
+                                            <Label HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="0,109,0,0" VerticalAlignment="Top" Width="67" Content="{Binding Naziv}"/>
+                                            <Label HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="67,109,0,0" VerticalAlignment="Top" Width="58" Content="{Binding CijenaS, Mode=OneWay}"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </Grid>
 
                     <Grid Grid.Column="1">
@@ -97,7 +108,7 @@
 
 
                 <Grid Grid.Row="1" Background="Green">
-                    <Button Content="Započni rezervaciju" HorizontalAlignment="Right" Margin="0,5,10,5" VerticalAlignment="Stretch" Width="216"/>
+                    <Button Content="Započni rezervaciju" HorizontalAlignment="Right" Margin="0,5,10,5" VerticalAlignment="Stretch" Width="216" Command="{Binding zapocniRezervacijuCommand, Source={StaticResource uvodnaForma}}" Visibility="{Binding ufVisible, Source={StaticResource uvodnaForma}}"/>
 
                 </Grid>
             </Grid>

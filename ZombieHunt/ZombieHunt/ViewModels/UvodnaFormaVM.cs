@@ -9,6 +9,7 @@ using ZombieHunt.Models;
 using ZombieHunt.ViewModels.Commands;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Threading;
 
 namespace ZombieHunt.ViewModels
 {
@@ -16,20 +17,19 @@ namespace ZombieHunt.ViewModels
     {
         private KomentariKolekcija kk;
 
-      
-        public UcitajOpremuCommand ucitajOpremuCommand { get; set; }
+        #region ICommand pokazivači
+        public ShowAdminCommand showAdminCommand { get; set; }
+        public PrikaziONamaCommand prikaziONamaCommand { get; set; }
         public UcitajOruzjeCommand ucitajOruzjeCommand { get; set; }
-        public ShowLogInCommand showLogInCommand { get; set; }
-        public ShowHelpCommand showHelpCommand { get; set; }
-        public ShowDescriptionCommand showDescriptionCommand { get; set; } 
+        public UcitajOpremuCommand ucitajOpremuCommand { get; set; }
+        public PrikaziOsobljeCommand prikaziOsobljeCommand { get; set; }
+        public UcitajHranuCommand ucitajHranuCommand { get; set; }
+        public UcitajVozilaCommand ucitajVozilaCommand { get; set; }
+        public ZapocniRezervacijuCommand zapocniRezervacijuCommand { get; set; }
+        #endregion
 
-
-
-        private ObservableCollection<Komentar> _komentariOC;
 
         private ObservableCollection<Oprema> _opremaOC;
-
-
         public ObservableCollection<Komentar> komentariOC
         {
             get { return _komentariOC; }
@@ -39,8 +39,8 @@ namespace ZombieHunt.ViewModels
                 RaisePropertyChanged("komentariOC");
             }
         }
-
-
+        
+        private ObservableCollection<Komentar> _komentariOC;
         public ObservableCollection<Oprema> opremaOC
         {
             get { return _opremaOC; }
@@ -51,21 +51,47 @@ namespace ZombieHunt.ViewModels
             }
         }
 
+        
 
         public UvodnaFormaVM()
         {
             kk = new KomentariKolekcija();
             komentariOC = new ObservableCollection<Komentar>(kk.UcitajKomentare());
+            prikaziONamaCommand = new PrikaziONamaCommand(this);
             ucitajOruzjeCommand = new UcitajOruzjeCommand(this);
             ucitajOpremuCommand = new UcitajOpremuCommand(this);
-      
-            showLogInCommand = new ShowLogInCommand(this);
-            showHelpCommand = new ShowHelpCommand(this);
-            showDescriptionCommand = new ShowDescriptionCommand(this);
+            prikaziOsobljeCommand = new PrikaziOsobljeCommand(this);
+            ucitajHranuCommand = new UcitajHranuCommand(this);
+            ucitajVozilaCommand = new UcitajVozilaCommand(this);
+            showAdminCommand = new ShowAdminCommand(this);
+            zapocniRezervacijuCommand = new ZapocniRezervacijuCommand(this);
             
         }
 
-       
+        public void ShowAdministratorPrivileges()
+        {
+            Thread t = new Thread(() =>
+            {
+                AdministratorForma af = new AdministratorForma();
+
+                af.Show();
+                af.Closed += (sender, e) => af.Dispatcher.InvokeShutdown();
+
+                System.Windows.Threading.Dispatcher.Run();
+            });
+
+            t.IsBackground = true;
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
+            
+        }
+
+        public void PrikaziONama()
+        {
+            ONama on = new ONama();
+            on.ShowDialog();
+        }
+
         public void UcitajOruzje()
         {
             OpremaKolekcija opremaKol = new OpremaKolekcija();                              //trebaju nove instance, ne micati u konstruktor
@@ -78,25 +104,31 @@ namespace ZombieHunt.ViewModels
             opremaOC = new ObservableCollection<Oprema>(opremaKol.UcitajOpremu("oprema"));
         }
 
-        public void ShowLogIn()
+        public void PrikaziOsoblje()
         {
-            LogIn l = new LogIn();
-            l.ShowDialog();
+            OsobljeForma of = new OsobljeForma();
+            of.ShowDialog();
         }
 
-
-        public void ShowHelp()
+        public void UcitajHranu()
         {
-            Help h = new Help();
-            h.ShowDialog();
+            OpremaKolekcija opremaKol = new OpremaKolekcija();
+            opremaOC = new ObservableCollection<Oprema>(opremaKol.UcitajOpremu("hrana"));
         }
 
-        public void ShowDescription()
+        public void UcitajVozila()
         {
-            ONama on = new ONama();
-            on.ShowDialog();
+            OpremaKolekcija opremaKol = new OpremaKolekcija();
+            opremaOC = new ObservableCollection<Oprema>(opremaKol.UcitajOpremu("vozila"));
         }
-     
+
+        public void ZapocniRezervaciju()
+        {
+            Rezervacija_pt1 rez1 = new Rezervacija_pt1();
+            rez1.ShowDialog();
+        }
+        
+
 
         #region INotifyPropertyChanged implementation
 
