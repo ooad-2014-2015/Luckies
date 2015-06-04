@@ -69,6 +69,9 @@
     <Compile Include="Models\Pretraga.cs" />
     <Compile Include="Models\PretragaKolekcija.cs" />
     <Compile Include="ViewModels\AdminVM.cs" />
+    <Compile Include="ViewModels\Commands\Admin\OFDCommand.cs" />
+    <Compile Include="ViewModels\Commands\Admin\UnesiOpremuCommand.cs" />
+    <Compile Include="ViewModels\Commands\Admin\UnesiOsobljeCommand.cs" />
     <Compile Include="ViewModels\Commands\DodajKlijentaCommand.cs" />
     <Compile Include="ViewModels\Commands\NastaviRezervacijuCommand.cs" />
     <Compile Include="ViewModels\Commands\Ponuda\PrikaziONamaCommand.cs" />
@@ -79,13 +82,18 @@
     <Compile Include="ViewModels\Commands\Ponuda\UcitajOruzjeCommand.cs" />
     <Compile Include="ViewModels\Commands\Ponuda\UcitajOsobljeCommand.cs" />
     <Compile Include="ViewModels\Commands\Ponuda\UcitajVozilaCommand.cs" />
-    <Compile Include="ViewModels\Commands\Pretraga\ImePretragaCommand.cs" />
-    <Compile Include="ViewModels\Commands\Pretraga\PrezimePretragaCommand.cs" />
-    <Compile Include="ViewModels\Commands\Proba.cs" />
+    <Compile Include="ViewModels\Commands\Admin\DolazakPretragaCommand.cs" />
+    <Compile Include="ViewModels\Commands\Admin\ImePretragaCommand.cs" />
+    <Compile Include="ViewModels\Commands\Admin\PolazakPretragaCommand.cs" />
+    <Compile Include="ViewModels\Commands\Admin\PrezimePretragaCommand.cs" />
+    <Compile Include="ViewModels\Commands\RezervisiHranuCommand.cs" />
     <Compile Include="ViewModels\Commands\RezervisiOpremuCommand.cs" />
     <Compile Include="ViewModels\Commands\RezervisiOruzjeCommand.cs" />
-    <Compile Include="ViewModels\Commands\UnesiNovoOsobljeCommand.cs" />
     <Compile Include="ViewModels\Commands\Ponuda\ZapocniRezervacijuCommand.cs" />
+    <Compile Include="ViewModels\Commands\RezervisiOsobljeCommand.cs" />
+    <Compile Include="ViewModels\Commands\RezervisiVozilaCommand.cs" />
+    <Compile Include="ViewModels\Commands\UcitajOsobljeRezervacijaCommand.cs" />
+    <Compile Include="ViewModels\Commands\UkloniKlijentaCommand.cs" />
     <Compile Include="ViewModels\OsobljeFormaVM.cs" />
     <Compile Include="ViewModels\RezervacijaVM.cs" />
     <Compile Include="ViewModels\UvodnaFormaVM.cs" />
@@ -97,6 +105,9 @@
     </Compile>
     <Compile Include="Views\OsobljeForma.xaml.cs">
       <DependentUpon>OsobljeForma.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RezervacijaOsobljaForma.xaml.cs">
+      <DependentUpon>RezervacijaOsobljaForma.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Rezervacija_pt1.xaml.cs">
       <DependentUpon>Rezervacija_pt1.xaml</DependentUpon>
@@ -148,6 +159,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\RezervacijaOsobljaForma.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Rezervacija_pt1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -174,6 +189,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ONama.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Silhouette.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

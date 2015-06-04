@@ -4,11 +4,11 @@
         xmlns:vm="clr-namespace:ZombieHunt.ViewModels"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         Title="Administratorski pristup" Height="480" Width="800">
-    
+
     <Window.Resources>
         <vm:AdminVM x:Key="adminForma"/>
     </Window.Resources>
-    
+
     <Grid>
         <TabControl HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Stretch">
             <TabItem Header="Novo">
@@ -21,25 +21,193 @@
 
                     <GroupBox Grid.Column="0" Header="Oprema">
                         <Grid>
-                            <Label Content="Naziv:" HorizontalAlignment="Left" Margin="23,20,0,0" VerticalAlignment="Top"/>
-                            <Label Content="Cijena:" HorizontalAlignment="Left" Margin="20,51,0,0" VerticalAlignment="Top"/>
-                            <Label Content="Količina" HorizontalAlignment="Left" Margin="14,82,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="70,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="70,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="70,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                            <Button Content="Button" HorizontalAlignment="Left" Margin="115,142,0,0" VerticalAlignment="Top" Width="75"/>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="6*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Grid Grid.Column="0">
+                                    <Label Content="Naziv:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+                                </Grid>
+
+                                <Grid Grid.Column="1">
+                                    <TextBox VerticalContentAlignment="Center" Margin="0,2,0,2" Text="{Binding Naziv_oprema, Source={StaticResource adminForma}}"/>
+                                </Grid>
+                                
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <Label Content="Cijena:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+                                </Grid>
+
+                                <Grid Grid.Column="1">
+                                    <TextBox VerticalContentAlignment="Center" Margin="0,2,0,2" Text="{Binding Cijena_oprema, Source={StaticResource adminForma}}"/>
+                                </Grid>
+
+                            </Grid>
+
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <Label Content="Količina:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+                                </Grid>
+
+                                <Grid Grid.Column="1">
+                                    <TextBox VerticalContentAlignment="Center" Margin="0,2,0,2" Text="{Binding Kolicina_oprema, Source={StaticResource adminForma}}"/>
+                                </Grid>
+
+                            </Grid>
+
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <Label Content="Kategorija:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+                                </Grid>
+
+                                <Grid Grid.Column="1">
+                                    <ComboBox Name="TipOpreme" Margin="0,2,0,2"  SelectedIndex="0" FontSize="14" VerticalContentAlignment="Center" ItemsSource="{Binding tipopreme, Source={StaticResource adminForma}}" SelectedItem="{Binding Kategorija_oprema, Source={StaticResource adminForma}}"/>
+                                </Grid>
+
+                            </Grid>
+
+                            <Grid Grid.Row="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <Label Content="Slika:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+                                </Grid>
+
+                                <Grid Grid.Column="1">
+                                    <TextBox VerticalContentAlignment="Center" Margin="0,2,0,2" IsEnabled="False" Text="{Binding PicturePath_oprema, Source={StaticResource adminForma}}"/>
+                                </Grid>
+
+                            </Grid>
+
+                            <Grid Grid.Row="5">
+                                <Button Name="ButtonOprema" Content="Otvori" HorizontalAlignment="Right" Margin="0,2,0,2" Width="80" Command="{Binding ofdCommand, Source={StaticResource adminForma}}" CommandParameter="{Binding ElementName=ButtonOprema}"/>
+                            </Grid>
+
+                            <Grid Grid.Row="6">
+                                <Button Content="Unesi novu opremu" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Command="{Binding unesiOpremuCommand, Source={StaticResource adminForma}}"/>
+                            </Grid>
+                            
                         </Grid>
                     </GroupBox>
 
                     <GroupBox Grid.Column="1" Header="Osoblje">
                         <Grid>
-                            <Label Content="Naziv:" HorizontalAlignment="Left" Margin="60,20,0,0" VerticalAlignment="Top"/>
-                            <Label Content="Cijena:" HorizontalAlignment="Left" Margin="57,51,0,0" VerticalAlignment="Top"/>
-                            <Label Content="Specijalizacija:" HorizontalAlignment="Left" Margin="17,82,0,0" VerticalAlignment="Top"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="107,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>
-                            <TextBox HorizontalAlignment="Left" Height="23" Margin="107,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>
-                            <Button Content="Dodaj" HorizontalAlignment="Left" Margin="60,328,0,0" VerticalAlignment="Top" Width="255"/>
-                            <ComboBox Name="Kategorije" HorizontalAlignment="Left" Margin="107,82,0,0" VerticalAlignment="Top" Width="255" ItemsSource="{Binding kategorije, Source={StaticResource adminForma}}" SelectedIndex="0"/>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="7*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <Grid Grid.Column="0">
+                                    <Label Content="Naziv:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+                                </Grid>
+
+                                <Grid Grid.Column="1">
+                                    <TextBox Margin="0,2,0,2" VerticalContentAlignment="Center" Text="{Binding Naziv_osoba, Source={StaticResource adminForma}, Mode=TwoWay}" FontSize="14"/>
+                                </Grid>
+
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <Label Content="Cijena:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+                                </Grid>
+
+                                <Grid Grid.Column="1">
+                                    <TextBox Margin="0,2,0,2" VerticalContentAlignment="Center" Text="{Binding Cijena_osoba, Source={StaticResource adminForma}, Mode=TwoWay}" FontSize="14"/>
+                                </Grid>
+
+                            </Grid>
+
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <Label Content="Specijalizacija:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+                                </Grid>
+
+                                <Grid Grid.Column="1">
+                                    <ComboBox Name="Kategorije" Margin="0,2,0,2" ItemsSource="{Binding kategorije, Source={StaticResource adminForma}}" SelectedItem="{Binding Tip_osoba, Source={StaticResource adminForma}}" SelectedIndex="0" FontSize="14" VerticalContentAlignment="Center"/>
+                                </Grid>
+
+                            </Grid>
+
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <Label Content="Slika:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+                                </Grid>
+
+                                <Grid Grid.Column="1">
+                                    <TextBox Margin="0,2,0,2" TextWrapping="Wrap" Text="{Binding PicturePath_osoba, Source={StaticResource adminForma}, Mode=TwoWay}" IsEnabled="False" FontSize="14"/>
+                                </Grid>
+
+                            </Grid>
+
+                            <Grid Grid.Row="4">
+                                <Button Name="ButtonOsoblje" Content="Otvori" HorizontalAlignment="Right" Margin="0,2,0,2" Width="80" Command="{Binding ofdCommand, Source={StaticResource adminForma}}" CommandParameter="{Binding ElementName=ButtonOsoblje}"/>
+                            </Grid>
+
+                            
+                            <Grid Grid.Row="5">
+                                <Button Content="Dodaj novo osoblje" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="255" Command="{Binding unesiOsobljeCommand, Source={StaticResource adminForma}}"/>
+                            </Grid>
+                            
+                            
+                            
                         </Grid>
                     </GroupBox>
 
@@ -52,7 +220,7 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="8*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -94,13 +262,23 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="1">
-                            <TextBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16">
-                                
+                            <TextBox Name="Polazak" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Text="{Binding PolazakTemp, Source={StaticResource adminForma}, UpdateSourceTrigger=LostFocus}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="TextChanged">
+                                        <i:InvokeCommandAction Command="{Binding Path=polazakPretragaCommand, Source={StaticResource adminForma}, UpdateSourceTrigger=PropertyChanged}" CommandParameter="{Binding ElementName=Polazak}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                             </TextBox>
                         </Grid>
 
                         <Grid Grid.Column="2">
-                            <TextBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16"/>
+                            <TextBox Name="Dolazak" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Text="{Binding DolazakTemp, Source={StaticResource adminForma}, UpdateSourceTrigger=LostFocus}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="TextChanged">
+                                        <i:InvokeCommandAction Command="{Binding Path=dolazakPretragaCommand, Source={StaticResource adminForma}, UpdateSourceTrigger=PropertyChanged}" CommandParameter="{Binding ElementName=Dolazak}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
                         </Grid>
 
                         <Grid Grid.Column="3">
@@ -136,7 +314,7 @@
                                             <ColumnDefinition Width="4*"/>
                                             <ColumnDefinition Width="4*"/>
                                         </Grid.ColumnDefinitions>
-                                        
+
                                         <Grid Grid.Column="0">
                                             <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding ID}"/>
                                         </Grid>
@@ -159,13 +337,13 @@
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                           
+
                         </ListView>
                     </Grid>
-                    
+
                 </Grid>
             </TabItem>
-                
+
 
 
 

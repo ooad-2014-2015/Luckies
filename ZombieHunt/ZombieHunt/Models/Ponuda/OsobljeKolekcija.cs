@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace ZombieHunt.Models
@@ -35,7 +36,6 @@ namespace ZombieHunt.Models
 
         public OsobljeKolekcija()
         {
-            listaOsoblja = new List<Osoblje>();
             conn = new SqlConnection();
             conn.ConnectionString = "Integrated Security=true;Initial Catalog=ZombieHuntDB; " + "Data Source=METH\\SQLEXPRESS";
         }
@@ -52,6 +52,8 @@ namespace ZombieHunt.Models
                 command.CommandText = "SELECT [ID], [Naziv], [Cijena], [Tip], [Slika] FROM [ZombieHuntDB].[dbo].[Osoblje]";
 
                 SqlDataReader reader = command.ExecuteReader();
+
+                listaOsoblja = new List<Osoblje>();
 
                 while (reader.Read())
                 {
@@ -72,14 +74,52 @@ namespace ZombieHunt.Models
             }
             catch (SqlException sqle)
             {
-                Console.WriteLine("Error accesing the database: {0}", sqle.Message);
+                MessageBox.Show("Error accesing the database: "+ sqle.Message);
             }
             finally
             {
                 conn.Close();
-                //Console.WriteLine("Konekcija zatvorena!");
             }
             return listaOsoblja;
         }
+
+        public void DodajOsoblje(string naziv, double cijena, string tip, string path)
+        {
+            try
+            {
+                FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+                BinaryReader reader = new BinaryReader(fs);
+
+                byte[] photo = reader.ReadBytes((int)fs.Length);
+                reader.Close();
+                fs.Close();
+
+
+                string query = "INSERT INTO Osoblje (Naziv, Cijena, Tip, Slika) VALUES (@Naziv, @Cijena, @Tip, @Slika)";
+
+
+                SqlCommand command = new SqlCommand(query, conn);
+
+                command.Parameters.Add("@Naziv", System.Data.SqlDbType.VarChar, 50).Value = naziv;
+                command.Parameters.Add("@Cijena", System.Data.SqlDbType.Float).Value = cijena;
+                command.Parameters.Add("@Tip", System.Data.SqlDbType.VarChar, 50).Value = tip;
+                command.Parameters.Add("@Slika", System.Data.SqlDbType.Image, photo.Length).Value = photo;
+
+
+                conn.Open();
+                command.ExecuteNonQuery();
+                                              
+            }
+            catch (SqlException sqle)
+            {
+                MessageBox.Show("Error accesing the database: " + sqle.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+          
+        }
+    
     }
 }
