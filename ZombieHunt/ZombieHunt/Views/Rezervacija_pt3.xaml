@@ -44,7 +44,7 @@
 
             </Grid>
             <Grid Grid.Column="1">
-                <Button Content="Izvrši uplatu" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="100"/>
+                <Button Content="Izvrši uplatu" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="100" Command="{Binding izvrsiUplatuCommand, Source={StaticResource Rezervacija}}"/>
             </Grid>
         </Grid>
 
@@ -55,10 +55,10 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
-                <Button Content="Printaj ugovore" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="100" IsEnabled="False"/>
+                <Button Content="Printaj ugovore" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="100" Command="{Binding printajUgovoreCommand, Source={StaticResource Rezervacija}}"/>
             </Grid>
             <Grid Grid.Column="1">
-                <Button Content="Završi" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="100" IsEnabled="False"/>
+                <Button Content="Završi" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="100" Command="{Binding finalizirajRezervacijuCommand, Source={StaticResource Rezervacija}}"/>
             </Grid>
         </Grid>
 

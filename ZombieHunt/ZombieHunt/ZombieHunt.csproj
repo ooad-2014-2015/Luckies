@@ -35,8 +35,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="PdfSharp, Version=1.31.1789.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\PdfSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +50,10 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TallComponents.PDF.Rasterizer, Version=3.0.120.0, Culture=neutral, PublicKeyToken=76bf2dedaa68ccb5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\TallComponents.PDF.Rasterizer.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -72,8 +81,11 @@
     <Compile Include="ViewModels\Commands\Admin\OFDCommand.cs" />
     <Compile Include="ViewModels\Commands\Admin\UnesiOpremuCommand.cs" />
     <Compile Include="ViewModels\Commands\Admin\UnesiOsobljeCommand.cs" />
+    <Compile Include="ViewModels\Commands\FinalizirajRezervacijuCommand.cs" />
+    <Compile Include="ViewModels\Commands\IzvrsiUplatuCommand.cs" />
     <Compile Include="ViewModels\Commands\Ponuda\PrikaziHelpCommand.cs" />
     <Compile Include="ViewModels\Commands\PrikaziPlacanjeCommand.cs" />
+    <Compile Include="ViewModels\Commands\PrintajUgovoreCommand.cs" />
     <Compile Include="ViewModels\Commands\RacunajPopustCommand.cs" />
     <Compile Include="ViewModels\Commands\Rezervacija\DodajKlijentaCommand.cs" />
     <Compile Include="ViewModels\Commands\Rezervacija\NastaviRezervacijuCommand.cs" />
