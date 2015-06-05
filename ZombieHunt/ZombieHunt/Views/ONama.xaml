@@ -6,6 +6,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
         Title="ONama" Height="300" Width="300" WindowState="Maximized" >
 
+    <Window.Resources>
+        <vm:UvodnaFormaVM x:Key="uvodnaForma"/>
+    </Window.Resources>
+
     <Grid x:Name="GlavniGrid" Grid.Row="0" Background="#FF6E958C" Grid.IsSharedSizeScope="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -18,7 +22,7 @@
         </Grid.ColumnDefinitions>
         <Image Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="/ZombieHunt;component/Images/ONama1.jpg"/>
         <Image Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="1" Source="/ZombieHunt;component/Images/ONama2.png"/>
-        <TextBlock x:Name="opciOpis" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Left" Margin="36,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="opciOpis" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Left" Margin="36,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding ONama, Source={StaticResource uvodnaForma}}"/>
     </Grid>
 
 </Window>

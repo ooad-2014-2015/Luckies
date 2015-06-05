@@ -1,10 +1,10 @@
-  "Dosao si ovdje
+  'Dosao si ovdje
    Gdje je najnezahvalnije bilo doci
    Ovdje gdje je najlude bilo stici
    Ovdje gdje je ipak najjunackije bilo nici
    Jer ovdje se ne zivi samo da bi se umrlo
    Ovdje se i umire
-   Da bi se zivjelo."               
+   Da bi se zivjelo.'             
                                        MAK DIZDAR
 
 

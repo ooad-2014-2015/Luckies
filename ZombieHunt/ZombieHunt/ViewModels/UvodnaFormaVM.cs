@@ -35,8 +35,37 @@ namespace ZombieHunt.ViewModels
                                 "Ukoliko se odlucite da odmah platite vasu najbolju odluku u zivotu, odmah cete dobiti svoj ugovor. \n" +
                                 "Na dan polaska nemojte zaboraviti svoje ugovore i racune! Ukoliko se odlucite da ipak platite u nasoj agenciji, cekamo vas.\n" +
                                 "U tom slucaju nemojte oklijevati, jer necemo dozivotno cekati na Vas!";
+
+            ONama =     "'Dosao si ovdje\n"+
+                        "Gdje je najnezahvalnije bilo doci\n " +
+                        "Ovdje gdje je najlude bilo stici\n " +
+                        "Ovdje gdje je ipak najjunackije bilo nici\n " +
+                        "Jer ovdje se ne zivi samo da bi se umrlo\n " +
+                        "Ovdje se i umire\n " +
+                        "Da bi se zivjelo.'\n              " +
+                         "                                   MAK DIZDAR\n\n\n " +
+
+
+                        "Zombie Hunt je agencija koja omogucava ljubiteljima adrenalina da se na jedan potpuno novi nacin oslobode stresa i pokazu svoju snagu i snalazljivost u borbi za zivot.  "+
+                        "Lov na Zombije predstavlja novi vid  sporta namijenjen prvenstveno za ljude koji na najbolji nacin zele da iskuse vrijednost zivota i ljepotu prirode. Zombiji su  "+
+                        "agresivna i neprijateljski nastrojena bezumna bica koja bi neobuzdana predstavljala opasnost po covjecanstvo. Opasnost proizlazi iz njihove sposobnosti da zaraze  "+
+                        "zive organizme putem fizickog kontakta. No, zbog njihovog nedostatka inteligencije, nisu sposobni ni za kakav oblik organizacije te zbog toga za ucesnike u nasem  "+
+                        "programu ne predstavljaju nista drugo do pokretne mete i izvor neogranicene zabave.\n " +
+                        "Agencija je osnovana 2007. god u Londonu, Ujedinjeno Kraljevstvo, s ciljem da se stvori jedan novi vid zabave za ljubitelje adrenalina. Osnovana je pod nazivom Zombies, "+
+                        "dok je nakon godinu dana preimenovana u ZombieHunt. Na pocetku poslovanja, agencija je imala samo 15 uposlenika, dok danas broji 25.000 uposlenika u 10.348 poslovnica "+
+                        "sirom svijeta, gdje je jedina agencija koja se bavi ovakvom vrstom sporta.\n  " +
+                        "Od 2007. do 2008. god lov na zombije odrzavao se u Londonu, na specijalnom terenu, pri cemu su klijenti imali na raspolaganju samo 5 razlicitih vrsta pusaka. "+
+                        "Od 2008. god, lov se premjesta na nenaseljeni egzoticni otok Saccubos, u sredisnjem dijelu Indijskog okeana.  "+
+                        "Takoder, agencija uvodi novi vid poslovanja sa jednom od najpouzdanijih avio kompanija, AirBus, koja je zaduzena da klijenti na otok dodju sigurno I udobno. "+
+                        "Uvodi I novo oruzje I opremu, kao I strucno osoblje koje brine za sigurnost klijenata.  "+
+                        "Od pocetka 2009., agencija siri svoje poslovanje na druge dijelove svijeta, i otvara novih 1.000 poslovnica u Evropi. Krajem 2010.godine, agencija je brojala 5.125 "+
+                        "poslovnica rasprostranjenih na veci dio Sjeverne Amerike i Evrope.\n " +
+                        "Danas broji 10.348 poslovnica diljem svijeta, i taj broj svake godine raste.\n " +
+                        "Broj zadovoljnih klijenata se, do 2009. godine udvostrucavao svake godine, dok danas se taj broj godisnje ucetverostrucava.\n " +
+                        "Danas, agencija broji I do 2.000 stalnih klijenata, klijenata koji su korisnici ZombieCard kartice, dok je u lov do sada otislo preko 98.000 ljudi!";
         }
 
+        public string ONama { get; set; }
         public string HelpLogin { get; set; }
         public string HelpONama { get; set;}
         public string HelpKomentari { get; set; }
